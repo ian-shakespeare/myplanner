@@ -1,4 +1,6 @@
 <script lang="ts">
+	import CheckButton from "$lib/CheckButton.svelte";
+
     const reminders = [
         {
             name: "Go Grocery Shopping",
@@ -34,6 +36,7 @@
             <div class="text-neutral-500">
                 {`${new Date(reminder.due).toDateString()}`}
             </div>
+            <CheckButton />
         </section>
     {/each}
 </div>
