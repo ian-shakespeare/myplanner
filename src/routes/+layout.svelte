@@ -2,6 +2,6 @@
     import "../app.css"
 </script>
 
-<div class="w-full h-full pt-8 bg-neutral-900 text-white">
+<div class="w-full h-full py-8">
     <slot />
 </div>
