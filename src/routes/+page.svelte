@@ -1,21 +1,14 @@
 <script lang="ts">
-    import type { PageData } from './$types';
-    import LogIn from "$lib/auth/LogIn.svelte";
-    import Reminders from "$lib/reminders/Reminders.svelte";
-
-    type Reminder = {
-        id: number
-        name: string
-        desc: string
-        due: string
-    }
+    import type { PageData } from './$types'
+    import LogIn from '$lib/auth/LogIn.svelte'
+    import ReminderList from '$lib/reminders/ReminderList.svelte'
 
     export let data: PageData
     let loggedIn = true
 </script>
 
 {#if loggedIn}
-    <Reminders reminders={data.reminders} />
+    <ReminderList reminders={data.reminders} />
 {:else}
     <LogIn />
 {/if}

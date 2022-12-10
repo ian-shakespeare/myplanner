@@ -1,13 +1,7 @@
 <script lang="ts">
-    import CheckButton from "$lib/buttons/CheckButton.svelte"
-    import CloseButton from "$lib/buttons/CloseButton.svelte"
-
-    type Reminder = {
-        id: number
-        name: string
-        desc: string
-        due: string
-    }
+    import CheckButton from '$lib/buttons/CheckButton.svelte'
+    import CloseButton from '$lib/buttons/CloseButton.svelte'
+    import type { Reminder } from '$lib/types'
     
     export let reminder: Reminder
 </script>
@@ -19,10 +13,10 @@
             {reminder.name}
         </h1>
         <p>
-            {reminder.desc}
+            {reminder.description}
         </p>
         <div class="text-neutral-500">
-            {`${new Date(reminder.due).toDateString()}`}
+            {`${new Date(reminder.due_date).toDateString()}`}
         </div>
     </section>
     <div class="w-full flex md:flex-col justify-around gap-8">
