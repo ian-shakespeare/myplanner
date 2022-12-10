@@ -3,6 +3,7 @@
     import CloseButton from "$lib/buttons/CloseButton.svelte"
 
     type Reminder = {
+        id: number
         name: string
         desc: string
         due: string
@@ -12,18 +13,20 @@
 </script>
 
 <hr class="border-neutral-700" />
-<section class="grid gap-2">
-    <h1 class="text-xl text-center font-bold">
-        {reminder.name}
-    </h1>
-    <p>
-        {reminder.desc}
-    </p>
-    <div class="text-neutral-500">
-        {`${new Date(reminder.due).toDateString()}`}
+<div class="grid gap-2 md:grid-cols-[1fr_auto]">
+    <section class="grid gap-2">
+        <h1 class="text-xl text-center font-bold">
+            {reminder.name}
+        </h1>
+        <p>
+            {reminder.desc}
+        </p>
+        <div class="text-neutral-500">
+            {`${new Date(reminder.due).toDateString()}`}
+        </div>
+    </section>
+    <div class="w-full flex md:flex-col justify-around gap-8">
+        <CheckButton id={reminder.id} />
+        <CloseButton id={reminder.id} />
     </div>
-    <div class="w-full flex justify-around gap-8">
-        <CheckButton />
-        <CloseButton />
-    </div>
-</section>
+</div>

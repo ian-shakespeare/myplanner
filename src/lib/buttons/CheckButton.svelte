@@ -1,6 +1,8 @@
 <script lang="ts">
+    export let id: number
+
     const handleCheckButton = () => {
-        console.log("check")
+        console.log(`Checking ${id}`)
     }
 </script>
 

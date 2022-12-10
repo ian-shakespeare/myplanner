@@ -1,6 +1,8 @@
 <script lang="ts">
+    export let id: number
+
     const handleCloseButton = () => {
-        console.log("Close")
+        console.log(`Closing ${id}`)
     }
 </script>
 
