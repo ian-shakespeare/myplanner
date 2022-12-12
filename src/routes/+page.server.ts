@@ -1,13 +1,32 @@
-import { API_URL, API_KEY } from '$env/static/private'
 import type { Reminder } from '$lib/types'
-import { createClient } from '@supabase/supabase-js'
-import type { PageServerLoad } from './$types'
-
-const supabase = createClient(API_URL, API_KEY)
+import type { PageServerLoad, Actions } from './$types'
+import { supabase } from '$lib/db'
 
 export const load: PageServerLoad = ( async () => {
-    const { data: reminders, error } = await supabase.from('reminders').select('*')
+    const { data: reminders, error } = await supabase.from('reminders')
+        .select('*')
+        .eq('is_completed', false)
+        .order('due_date', { ascending: true })
     return {
         reminders: reminders as Reminder[]
     }
 })
+
+export const actions: Actions = {
+    default: async ({ cookies, request }) => {
+        const data = await request.formData()
+        const name = data.get('name')
+        const description = data.get('description')
+        const dueDate = data.get('due_date')
+
+        if (!name || !description || !dueDate) return { success: false }
+
+        await supabase.from('reminders').insert({
+            name: name,
+            description: description,
+            due_date: dueDate
+        })
+
+        return { success: true }
+    }
+}
