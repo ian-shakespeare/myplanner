@@ -2,7 +2,7 @@ import type { Reminder } from '$lib/types'
 import type { PageServerLoad, Actions } from './$types'
 import { supabase } from '$lib/db'
 
-export const load: PageServerLoad = ( async () => {
+export const load = ( async () => {
     const { data: reminders, error } = await supabase.from('reminders')
         .select('*')
         .eq('is_completed', false)
@@ -10,7 +10,7 @@ export const load: PageServerLoad = ( async () => {
     return {
         reminders: reminders as Reminder[]
     }
-})
+}) satisfies PageServerLoad
 
 export const actions: Actions = {
     default: async ({ cookies, request }) => {
