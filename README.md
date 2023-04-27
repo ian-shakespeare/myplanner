@@ -1,27 +1,7 @@
 # MyPlanner
 
-A simple planner app for reminders
+![Screenshot of the MyPlanner homepage](screenshot.png)
 
-## Running the Project
+A simple planner app for reminders and todos. Add a reminder by pressing the plus button. Fill in the fields and submit to save the reminder to your list. The home page has your full reminder list sorted by due date. To complete a task hit the checkmark. Delete a task by clicking the X. Past reminders can be seen by clicking the history icon.
 
-Make an `.env` with `PUBLIC_API_URL` and `PUBLIC_API_KEY`
-
-```bash
-# install packages
-npm i
-
-# run project
-npm run dev
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+MyPlanner is built with SvelteKit and Tailwind. Backend services and database are managed by the open source BaaS Supabase. MyPlanner does not have authentication.
